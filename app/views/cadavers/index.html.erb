@@ -1,0 +1,48 @@
+<div class="ui container">
+  <div class="ui grid">
+    <div class="six wide column">
+      <h3>Welcome <%= current_user.user_name %></h3>
+      <h4>You have: <%= current_user.cadavers.count %> bodies for sale</h4>
+    </div>
+    <div class="ten wide column">
+      <% if current_user.cadavers.any? %>
+         <% @cadavers.each do |cadaver| %>
+          <div class="ui grid">
+            <div class="five wide column">
+              <%= cadaver.first_name %>, <%= cadaver.age %>
+              <br>
+              <% if cadaver.healthy? %>
+                <%= "Healthy, " %>
+              <% else %>
+                <%= "Diseased, " %>
+              <% end %>
+              <% if cadaver.fresh? %>
+                <%= "Fresh, " %>
+              <% else %>
+                <%= "Rotting, " %>
+              <% end %>
+              <% if cadaver.whole? %>
+                <%= "Complete." %>
+              <% else %>
+                <%= "Pieces." %>
+              <% end %>
+              <br><br>
+              <%= cadaver.description %>
+            </div>
+            <div class="eight wide column">
+              <%= "This will be a picture someday" %>
+            </div>
+            <div class="three wide column">
+              <%= link_to "Edit", edit_cadaver_path(cadaver) %>
+              <%= link_to "Delete", cadaver_path(cadaver), method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= "You are low on cadavers. Either buy some or get some by some other means..." %>
+        <br>
+        <%= link_to 'Add some recent aquisitions', new_cadaver_path %>
+      <% end %>
+    </div>
+  </div>
+</div>

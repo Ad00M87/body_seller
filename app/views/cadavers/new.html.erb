@@ -1,0 +1,31 @@
+<div class="ui form container">
+  <%= form_for(@cadaver) do |f| %>
+    <div class="">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="">
+      <%= f.label :age %>
+      <%= f.text_field :age %>
+    </div>
+    <div class="">
+      <%= f.label :healthy, 'Was Healthy? ' %>
+      <%= f.radio_button :healthy, :checked => true %>
+    </div>
+    <div class="">
+      <%= f.label :fresh, 'Body fresh? ' %>
+      <%= f.radio_button :fresh, :checked => true %>
+    </div>
+    <div class="">
+      <%= f.label :whole, 'Whole body? ' %>
+      <%= f.radio_button :whole, :checked => true %>
+    </div>
+    <div class="">
+      <%= f.label :description, "Tell us a little about them" %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="">
+     <%= f.submit "Add Cadaver", class: 'ui green button' %>
+    </div>
+  <% end %>
+</div>
